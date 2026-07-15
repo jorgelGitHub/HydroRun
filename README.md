@@ -44,7 +44,7 @@ npm run build
 Para GitHub Pages en este repositorio, ejecuta:
 
 ```bash
-ng build --configuration production --base-href /HydroRun/
+ng build --configuration production --base-href ./
 ```
 
 ## Pruebas
@@ -105,7 +105,7 @@ src/assets                 Recursos originales o placeholders
 5. Configura el remoto: `git remote add origin https://github.com/jorgelGitHub/HydroRun.git`.
 6. Sube la rama principal: `git branch -M main && git push -u origin main`.
 7. En GitHub, activa Pages con fuente GitHub Actions.
-8. Verifica que el workflow `.github/workflows/deploy.yml` compile con `--base-href /HydroRun/`.
+8. Verifica que el workflow `.github/workflows/deploy.yml` compile con `--base-href ./`.
 
 ## Capturas
 

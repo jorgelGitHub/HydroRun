@@ -6,7 +6,7 @@
   "scripts": {
     "start": "ng serve",
     "build": "ng build",
-    "build:pages": "ng build --configuration production --base-href /HydroRun/",
+    "build:pages": "ng build --configuration production --base-href ./",
     "test": "ng test --watch=false",
     "lint": "ng lint",
     "format": "prettier --write \"src/**/*.{ts,html,scss}\" \"*.md\""
