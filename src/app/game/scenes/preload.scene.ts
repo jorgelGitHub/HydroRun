@@ -6,7 +6,10 @@ export class PreloadScene extends Phaser.Scene {
   }
 
   preload(): void {
-    // Los recursos definitivos se cargaran desde src/assets en las siguientes etapas.
+    this.load.svg('water-runner', 'assets/sprites/water-runner.svg', {
+      width: 96,
+      height: 128,
+    });
   }
 
   create(): void {
