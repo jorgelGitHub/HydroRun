@@ -11,11 +11,14 @@ import { RankingService } from '../../core/services/ranking.service';
         @if (entries.length === 0) {
           <p>Aún no hay resultados guardados.</p>
         } @else {
-          <ol>
+          <ol class="ranking-list">
             @for (entry of entries; track entry.id) {
               <li>
-                <strong>{{ entry.name }}</strong> - {{ entry.score }} puntos -
-                {{ entry.elapsedSeconds }} s
+                <strong>{{ entry.name }}</strong>
+                <span>{{ entry.score }} puntos</span>
+                <span>{{ entry.elapsedSeconds }} s</span>
+                <span>{{ entry.dropsCollected }} gotas</span>
+                <span>{{ entry.finalHydration }}% hidratación</span>
               </li>
             }
           </ol>
@@ -24,6 +27,26 @@ import { RankingService } from '../../core/services/ranking.service';
       </div>
     </section>
   `,
+  styles: [
+    `
+      .ranking-list {
+        display: grid;
+        gap: 10px;
+        padding-left: 24px;
+      }
+
+      li {
+        background: var(--water-100);
+        border-radius: 8px;
+        padding: 12px;
+      }
+
+      li span {
+        display: inline-block;
+        margin-left: 12px;
+      }
+    `,
+  ],
 })
 export class RankingComponent {
   private readonly rankingService = inject(RankingService);

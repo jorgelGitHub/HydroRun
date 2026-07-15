@@ -5,10 +5,10 @@ import { Component } from '@angular/core';
   standalone: true,
   template: `
     <div class="touch-controls" aria-label="Controles táctiles">
-      <button type="button" aria-label="Mover a la izquierda">←</button>
-      <button type="button" aria-label="Mover a la derecha">→</button>
-      <button type="button" aria-label="Saltar">↑</button>
-      <button type="button" aria-label="Agacharse">↓</button>
+      <button type="button" aria-label="Mover a la izquierda" (pointerdown)="press('left', true)" (pointerup)="press('left', false)" (pointerleave)="press('left', false)">←</button>
+      <button type="button" aria-label="Mover a la derecha" (pointerdown)="press('right', true)" (pointerup)="press('right', false)" (pointerleave)="press('right', false)">→</button>
+      <button type="button" aria-label="Saltar" (pointerdown)="press('jump', true)" (pointerup)="press('jump', false)" (pointerleave)="press('jump', false)">↑</button>
+      <button type="button" aria-label="Agacharse" (pointerdown)="press('crouch', true)" (pointerup)="press('crouch', false)" (pointerleave)="press('crouch', false)">↓</button>
       <button type="button" aria-label="Pausar">P</button>
     </div>
   `,
@@ -39,4 +39,8 @@ import { Component } from '@angular/core';
     `,
   ],
 })
-export class TouchControlsComponent {}
+export class TouchControlsComponent {
+  press(action: 'left' | 'right' | 'jump' | 'crouch', active: boolean): void {
+    window.dispatchEvent(new CustomEvent('hydrorun:touch', { detail: { action, active } }));
+  }
+}

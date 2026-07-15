@@ -15,7 +15,7 @@ export class MenuScene extends Phaser.Scene {
       })
       .setOrigin(0.5);
     this.add
-      .text(640, 340, 'Pulsa espacio para iniciar la carrera', {
+      .text(640, 340, 'Pulsa espacio o toca para iniciar la carrera', {
         color: '#0369a1',
         fontFamily: 'Arial',
         fontSize: '28px',
@@ -23,5 +23,6 @@ export class MenuScene extends Phaser.Scene {
       .setOrigin(0.5);
 
     this.input.keyboard?.once('keydown-SPACE', () => this.scene.start('GameScene'));
+    this.input.once('pointerdown', () => this.scene.start('GameScene'));
   }
 }

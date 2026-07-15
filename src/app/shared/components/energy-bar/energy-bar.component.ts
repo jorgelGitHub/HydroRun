@@ -6,7 +6,7 @@ import { Component, Input } from '@angular/core';
   template: `
     <div class="meter" aria-label="Energía">
       <strong>⚡ Energía</strong>
-      <span>{{ value }}%</span>
+      <span>{{ value }}% - {{ value > 40 ? 'estable' : 'baja' }}</span>
       <div class="track"><span [style.width.%]="value"></span></div>
     </div>
   `,

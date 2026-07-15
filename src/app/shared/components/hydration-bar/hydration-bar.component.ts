@@ -6,7 +6,7 @@ import { Component, Input } from '@angular/core';
   template: `
     <div class="meter" aria-label="Hidratación">
       <strong>💧 Hidratación</strong>
-      <span>{{ value }}%</span>
+      <span>{{ value }}% - {{ label }}</span>
       <div class="track"><span [style.width.%]="value"></span></div>
     </div>
   `,
@@ -35,4 +35,20 @@ import { Component, Input } from '@angular/core';
 })
 export class HydrationBarComponent {
   @Input({ required: true }) value = 100;
+
+  get label(): string {
+    if (this.value >= 80) {
+      return 'excelente';
+    }
+    if (this.value >= 60) {
+      return 'buena';
+    }
+    if (this.value >= 40) {
+      return 'atención';
+    }
+    if (this.value > 0) {
+      return 'riesgo';
+    }
+    return 'fin';
+  }
 }
